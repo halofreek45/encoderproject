@@ -32,34 +32,28 @@ $("#inputText").keyup(function(e) {
         }
     }
 });
-$("#translationInputText").keyup(function(e)
-{
-  if(e.keyCode == 8)
-  {
-    translationContent.textContent = translationContent.textContent.substr(0, translationContent.textContent.length - 1);
-  }
-  else if(e.keyCode > 65 && e.keyCode <= 90) {
-    translationContent.textContent += String.fromCharCode(e.keyCode - 1);
-  }
-  else if(e.keyCode == 65)
-  {
-    translationContent.textContent += "Z";
-  }
-  else if(e.keyCode == 13) {
-  var decodeMessage = document.getElementById("translationInputText").value;
-  var messageArray = decodeMessage.split("");
-  translationContent.textContent = translationContent.textContent.substr(0, translationContent.textContent.length - 1);
-  for(var i = 0; i < messageArray.length; i++) {
-    var currentCode = messageArray[i].toUpperCase();
-    currentCode = currentCode.charCodeAt(0);
-    console.log(currentCode);
-     if (e.keyCode == 65) {
-      translationArea.textContent += "Z";
-    } else {
-      translationArea.textContent += String.fromCharCode(currentCode - 1);
+$("#translationInputText").keyup(function(e) {
+    if (e.keyCode == 8) {
+        translationContent.textContent = translationContent.textContent.substr(0, translationContent.textContent.length - 1);
+    } else if (e.keyCode > 65 && e.keyCode <= 90) {
+        translationContent.textContent += String.fromCharCode(e.keyCode - 1);
+    } else if (e.keyCode == 65) {
+        translationContent.textContent += "Z";
+    } else if (e.keyCode == 13) {
+        var decodeMessage = document.getElementById("translationInputText").value;
+        var messageArray = decodeMessage.split("");
+        translationContent.textContent = translationContent.textContent.substr(0, translationContent.textContent.length - 1);
+        for (var i = 0; i < messageArray.length; i++) {
+            var currentCode = messageArray[i].toUpperCase();
+            currentCode = currentCode.charCodeAt(0);
+            console.log(currentCode);
+            if (e.keyCode == 65) {
+                translationArea.textContent += "Z";
+            } else {
+                translationArea.textContent += String.fromCharCode(currentCode - 1);
+            }
+        }
     }
-  }
-}
 });
 $("input[type='radio']").click(function() {
     $("input:checked").prop('checked', false);
