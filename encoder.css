@@ -1,3 +1,6 @@
+atom-text-editor::shadow .comment {
+  color: red;
+}
 #textArea {
   width: 700px;
   height: 150px;

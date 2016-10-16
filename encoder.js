@@ -23,7 +23,6 @@ $("#inputText").keyup(function(e) {
         }
     } else if ($("input:checked").val() == "heiroglyphics") {
         if (e.keyCode == 32) {
-            //$("#textArea").append("<p> </p>");
             console.log("Added space")
         } else if (e.keyCode == 8) {
             textContent.textContent = textContent.textContent.substr(0, textContent.textContent.length - 1);
@@ -45,7 +44,7 @@ $("#translationInputText").keyup(function(e) {
         translationContent.textContent += "Z";
     } else if (e.keyCode == 13) {
         var decodeMessage = document.getElementById("translationInputText").value;
-        decodeMessage = decodeMessage.replace(/ /g,"1");
+        decodeMessage = decodeMessage.replace(/ /g, "1");
         var messageArray = decodeMessage.split("");
         console.log(decodeMessage);
         //translationContent.textContent = translationContent.textContent.substr(0, translationContent.textContent.length - 1);
