@@ -1,7 +1,39 @@
+var keyWordObject = {
+    65: 0,
+    66: 1,
+    67: 2,
+    68: 3,
+    69: 4,
+    70: 5,
+    71: 6,
+    72: 7,
+    73: 8,
+    74: 9,
+    75: 10,
+    76: 11,
+    77: 12,
+    78: 13,
+    79: 14,
+    80: 15,
+    81: 16,
+    82: 17,
+    83: 18,
+    84: 19,
+    85: 20,
+    86: 21,
+    87: 22,
+    88: 23,
+    89: 24,
+    90: 25
+}
+var keyWord = prompt("Please Enter your keyWord");
 var textValue;
 var textContent = document.getElementById("textArea");
 var convertedKey;
 var translationContent = document.getElementById("translationArea");
+var keyWordArray = [];
+var keyWordKey = [];
+var keyWordLetter;
 $("#inputText").keyup(function(e) {
     textValue = document.getElementById("inputText").value; //This is the input text box
     if ($("input:checked").val() == "caesarCipher") {
@@ -70,4 +102,36 @@ $("input[type='radio']").click(function() {
     console.log(this);
     textContent.textContent = "";
     document.getElementById("inputText").value = "";
-}); //This block lets only one radio button be checked at a time
+});
+//This block lets only one radio button be checked at a time
+$("#keyWordInputText").keyup(function(e) {
+    keyWord = keyWord.toUpperCase()
+    keyWordLetter = e.keyCode;
+    keyWordLetter = String.fromCharCode(keyWordLetter);
+    var subKeyWord = keyWord.split("");
+    for (var i = 0; i < subKeyWord.length; i++) {
+        keyWordKey.push(subKeyWord[i]);
+    }
+    for (var i = 65; i < 91; i++) {
+        //console.log("Keycode ran through object for " + String.fromCharCode(i) + " is " + keyWordObject[i])
+        if (keyWord.indexOf(String.fromCharCode(i)) > -1) {
+          //  console.log("Keyword Contains " + String.fromCharCode(i));
+        } else {
+            keyWordKey.push(String.fromCharCode(i));
+        }
+      }
+      //console.log(keyWordKey);
+    if (e.keyCode == 13) {
+        var text = document.getElementById("keyWordInputText").value;
+        text = text.split("");
+        for (var i = 0; i < text.length; i++) {
+          var currentLetter = text[i].toUpperCase();
+          if(keyWordKey[keyWordObject[currentLetter.charCodeAt(0)]] === undefined)
+          {}
+            else{document.getElementById("keyWordArea").textContent += keyWordKey[keyWordObject[currentLetter.charCodeAt(0)]]
+            //console.log(keyWordKey);
+        }
+      }
+    }
+});
+//keyWord.indexOf("a") > -1
